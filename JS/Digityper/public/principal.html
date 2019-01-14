@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Digityper</title>
+    <link rel="stylesheet" href="css/libs/materialize.min.css">
+    <link rel="stylesheet" href="css/libs/google-fonts.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align">Digityper</h1>
+        <p class="frase">Digityper, game for you increase your speed type.</p>
+
+        <ul class="informacoes center">
+            <li>
+                <i class="small material-icons icones">insert_chart</i>
+                <span id="tamanho-frase">8</span> palavras
+            </li>
+            <li>
+                <i class="small material-icons icones">access_time</i>
+                <span id="tempo-digitacao">8</span> segundos
+            </li>
+        </ul>
+
+        <div class="ajax-error center">
+            <p id="error">Ocorreu um erro, por favor tente novamente!</p>
+        </div>
+        <div class="ajax-sucess center">
+            <p id="sucess">Scoreboard saved successfully!</p>
+        </div>
+
+        <textarea class="campo-digitacao" rows="8" cols ="40"></textarea>
+
+        <div id="button-bar">
+            <button id="btn-restart" class="btn waves-effect waves-red btn-small disabled" disabled>
+                <i class="material-icons icones">restore</i>
+            </button>
+            <button id="btn-score" class="btn waves-effect waves-red btn-small light-blue">
+                <i class="material-icons icones">assignment</i>
+            </button>
+            <button id="btn-shuffle" class="btn waves-effect waves-red btn-small light-green">
+                <i class="material-icons icones">shuffle</i>
+            </button>
+            <label>
+                <button id="btn-search" class="btn waves-effect waves-red btn-small blue-grey">
+                    <i class="material-icons icones">search</i>
+                </button>
+                <input type="number" min="0" id="phrase-id">
+            </label>
+            <button id="btn-sync" class="btn waves-effect waves-red btn-small orange">
+                <i class="material-icons icones">shuffle</i>
+            </button>
+        </div>
+        <div class="preloader-wrapper small active" id="spinner">
+            <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+            </div>
+        </div>
+
+        <ul class="informacoes center">
+            <li><span id="contador-caracteres">0</span> caracteres</li>
+            <li><span id="contador-palavras">0</span> palavras</li>
+        </ul>
+
+        <section class="placar">
+            <h3 class="center">Scoreboard</h3>
+            <table class="centered bordered">
+                <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>No. de palavras</th>
+                        <th>Remover</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+
+        <script src="js/jquery.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/placar.js"></script>
+        <script src="js/frases.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+body{
+    overflow: scroll;
+}
+
+.campo-digitacao{
+    font-size: 20px;
+    height: 130px;
+}
+.frase{
+    font-size: 20px;
+    text-align: left;
+}
+.campo-desativado{
+    background-color: lightgrey;
+}
+.icones{
+    vertical-align: middle;
+}
+.borda-certa{
+    border: 3px solid green;
+}
+.borda-errada{
+    border: 3px solid red;
+}
+.placar{
+    display: none;
+}
+#spinner{
+    display: none;
+}
+#error{
+    color: red;
+    display: none;
+    font-size: 20px;
+}
+#phrase-id{
+    width: 40px;
+}
+
+#btn-sync{
+    float: right;
+}
+
+#sucess{
+    color: #0f9d58;
+    display: none;
+    font-size: 20px;
+}
