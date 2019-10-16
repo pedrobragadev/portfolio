@@ -8,7 +8,9 @@
     </tr>
     <tr *ngFor="let bike of bikes">
       <td>
-        {{bike.name}}
+        <a [title]="bike.name + ' details'">
+          {{bike.name}}
+        </a>
       </td>
       <td>
         {{bike.email}}
