@@ -17,7 +17,6 @@ public class Bike {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    //Criar alguns textos
     private String name;
     private String email;
     private String phone;
