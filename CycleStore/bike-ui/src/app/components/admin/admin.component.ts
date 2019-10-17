@@ -14,6 +14,9 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.getBikes();
   }
+  share() {
+    window.alert('Fui clicado');
+  }
   getBikes() {
     this.bikeService.getBikes().subscribe(
       data => { this.bikes = data; },
