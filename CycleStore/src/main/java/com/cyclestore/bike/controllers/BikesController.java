@@ -24,7 +24,7 @@ public class BikesController {
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Bike bike){
-        bikeRepository.save(bike); //Ajustar método aqui para trazer uma resposta para o usuario que foi salvo a bicicleta
+        bikeRepository.save(bike);
     }
 
     @GetMapping("/{id}")
