@@ -1,9 +1,10 @@
 package com.rent.starmovies.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -13,8 +14,16 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Length(min = 2, max = 300, message = "The name field must have more than {min} and less than {max} characters")
     private String name;
+
+    @NotNull
+    @Length(min = 2, max = 300, message = "The address field must have more than {min} and less than {max} characters")
     private String address;
+
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Cart> carts;
 
 

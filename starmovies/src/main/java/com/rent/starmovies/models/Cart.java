@@ -1,9 +1,12 @@
 package com.rent.starmovies.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -14,9 +17,17 @@ public class Cart {
     @Id
     private Long id;
 
+    @ManyToOne(optional = true)
     private Client client;
+
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.MERGE)
     private List<Item> itens;
+
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date date;
+
+    @Min(1)
     private Double totalValue;
 
 
