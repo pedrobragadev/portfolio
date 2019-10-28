@@ -5,8 +5,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Starmovies</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}">
+    <script src="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+    <!-- JQuery -->
+    <link href="css/jquery-ui.min.css" th:href="@{css/jquery-ui.min.css}">
+    <script src="js/jquery-3.3.1.slim.min.js" th:src="@{js/jquery-3.3.1.slim.min.js}"></script>
+    <script src="js/jquery-ui.min.js" th:src="@{js/jquery-ui.min.js}"></script>
+
 </head>
 <body>
-
+<div class="container">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/}"><img th:src="@{/img/Star_movies_logo.png}"/></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a class="brand" href="https://www.casadocodigo.com.br">Casa do Código</a></li>
+            <li><a class="brand" href="https://www.boaglio.com">boaglio.com</a></li>
+            <li><a class="brand" href="https://projects.spring.io/spring-boot/">Spring Boot</a></li>
+            <li><a class="brand" href="https://github.com/ultraq/thymeleaf-layout-dialect">Thymeleaf Layout</a></li>
+        </ul>
+    </nav>
+    <h1 layout:fragment="header">cabeçalho falso</h1>
+    <div layout:fragment="content">content falso</div>
+</div>
 </body>
 </html>
