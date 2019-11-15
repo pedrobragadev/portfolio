@@ -8,7 +8,7 @@ import java.nio.file.Path;
 @Service
 public class GifEncoderService {
 
-    public AnimatedGifEncoder getGifEnconder(boolean repeat, float frameRate, Path output){
+    public AnimatedGifEncoder getGifEncoder(boolean repeat, float frameRate, Path output){
         AnimatedGifEncoder gifEncoder = new AnimatedGifEncoder();
 
         if(repeat){

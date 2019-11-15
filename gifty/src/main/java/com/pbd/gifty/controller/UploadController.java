@@ -1,5 +1,10 @@
 package com.pbd.gifty.controller;
 
+import com.pbd.gifty.service.ConverterService;
+import com.pbd.gifty.service.GifEncoderService;
+import com.pbd.gifty.service.VideoDecoderService;
+import com.madgag.gif.fmsware.AnimatedGifEncoder;
+import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,8 +12,12 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.awt.*;
+import javax.inject.Inject;
+import java.io.File;
+import java.io.IOException;
 import java.lang.invoke.MethodHandles;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @RestController
 public class UploadController {
@@ -18,14 +27,36 @@ public class UploadController {
     @Value("${multipart.location}")
     private String location;
 
+    @Inject
+    private ConverterService converterService;
+
+    @Inject
+    private GifEncoderService gifEncoderService;
+
+    @Inject
+    private VideoDecoderService videoDecoderService;
+
     @PostMapping(value = "/upload", produces = MediaType.IMAGE_GIF_VALUE)
     public String upload(@RequestPart("file") MultipartFile file,
                          @RequestParam("start") int start,
                          @RequestParam("end") int end,
                          @RequestParam("speed") int speed,
-                         @RequestParam("repeat") boolean repeat) {
+                         @RequestParam("repeat") boolean repeat) throws IOException {
+        File videoFile = new File(location + "/" + System
+                .currentTimeMillis() + ".mp4");
+        file.transferTo(videoFile);
 
+        log.info("Saved video file to {}", videoFile.getAbsolutePath());
 
-        return "";
+        Path output = Paths.get(location + "/gif/" + System.currentTimeMillis() + ".gif");
+
+        FFmpegFrameGrabber frameGrabber = videoDecoderService.read(videoFile);
+        AnimatedGifEncoder gifEncoder = gifEncoderService.getGifEncoder(repeat,
+                (float) frameGrabber.getFrameRate(), output);
+        converterService.toAnimatedGif(frameGrabber, gifEncoder, start, end, speed);
+
+        log.info("Saved generated gif to {}", output.toString());
+
+        return output.getFileName().toString();
     }
 }
