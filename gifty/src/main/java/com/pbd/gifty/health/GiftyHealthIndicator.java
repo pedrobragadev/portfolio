@@ -11,6 +11,4 @@ public class GiftyHealthIndicator implements HealthIndicator {
     public Health health() {
         return Health.up().build();
     }
-
-
 }
