@@ -20,13 +20,7 @@ public class GiftyApplication {
         SpringApplication.run(GiftyApplication.class, args);
     }
 
-    @PostConstruct
-    private void init(){
-        File gifFolder = new File(gifLocation);
-        if (!gifFolder.exists()){
-            gifFolder.mkdir();
-        }
-    }
+
 
     @Bean
     public WebMvcConfigurer webMvcConfigurer() {
