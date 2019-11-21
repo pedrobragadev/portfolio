@@ -15,3 +15,7 @@ spring:
 
 logging:
   level.: debug
+
+com:
+  gifty:
+    gif-location: ${java.io.tmpdir}/gif
