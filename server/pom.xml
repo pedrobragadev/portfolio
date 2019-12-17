@@ -8,7 +8,7 @@
         <version>2.2.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>br.com</groupId>
+    <groupId>br.com.embravix</groupId>
     <artifactId>encontrecasa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>encontrecasa</name>
